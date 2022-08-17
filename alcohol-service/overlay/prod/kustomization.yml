@@ -1,0 +1,7 @@
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - config-map.yml
+
+namePrefix: prod-

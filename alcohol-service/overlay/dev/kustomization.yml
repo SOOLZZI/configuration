@@ -1,0 +1,6 @@
+bases:
+  - ../../base
+configMapGenerator:
+- name: alcohol-service-configmap
+  files:
+    - bootstrap-dev.yml

@@ -5,5 +5,5 @@ metadata:
 data:
   alcohol-service-config.yml: |
     server:
-      port: 8765
+      port: 8865
   
