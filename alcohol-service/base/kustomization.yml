@@ -2,3 +2,10 @@ resources:
   - deployment.yml
   - service.yml
   - role.yml
+
+configMapGenerator:
+- name: alcohol-service-configmap
+  options:
+    disableNameSuffixHash: true
+  files:
+    - bootstrap-dev.yml
