@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -18,14 +20,14 @@ spec:
       - name: mysql
         image: mysql:latest
         volumeMounts:
-          - mountPath: alcoholMysqlVolume
-            name: /var/lib/mysql
+          - mountPath: /var/lib/mysql
+            name: alcohol-mysql-volume
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
         ports:
         - containerPort: 3306
       volumes:
-      - name: alcoholMysqlVolume
-        persistVolumeClaim:
-          claimName: pvc1
+      - name: alcohol-mysql-volume
+        hostPath:
+          path: /volume/data
