@@ -1,6 +1,6 @@
-bases:
-  - ../../base
 configMapGenerator:
-- name: alcohol-service-configmap
+- name: alcohol-service-configmap-dev
+  options:
+    disableNameSuffixHash: true
   files:
     - bootstrap-dev.yml
