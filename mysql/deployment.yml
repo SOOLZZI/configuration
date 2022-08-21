@@ -17,8 +17,15 @@ spec:
       containers:
       - name: mysql
         image: mysql:latest
+        volumeMounts:
+          - mountPath: alcoholMysqlVolume
+            name: /var/lib/mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
         ports:
         - containerPort: 3306
+      volumes:
+      - name: alcoholMysqlVolume
+        persistVolumeClaim:
+          claimName: pvc1
