@@ -1,0 +1,6 @@
+configMapGenerator:
+- name: recipe-service-configmap-dev
+  options:
+    disableNameSuffixHash: true
+  files:
+    - bootstrap-dev.yml
