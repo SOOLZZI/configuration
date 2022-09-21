@@ -1,0 +1,6 @@
+configMapGenerator:
+- name: authentication-configmap-dev
+  options:
+    disableNameSuffixHash: true
+  files:
+    - bootstrap-dev.yml

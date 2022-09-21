@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:60601/harudb?serverTimezone=Asia/Seoul
-    username: root
-    password: 1234
+    username: ${database.username}
+    password: ${database.password}
 
   jpa:
     show-sql: true

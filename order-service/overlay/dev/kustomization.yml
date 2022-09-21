@@ -1,0 +1,6 @@
+configMapGenerator:
+- name: order-service-configmap-dev
+  options:
+    disableNameSuffixHash: true
+  files:
+    - bootstrap-dev.yml

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-service
+spec:
+  selector:
+    matchLabels:
+      app: recipe-service
+  
+  template:
+    metadata:
+      labels:
+        app: recipe-service
+    
+    spec:
+      serviceAccountName: api-reader
+      containers:
+      - name: recipe-service
+        image: phjppo0918/haru-han-jan-recipe-service
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8080
