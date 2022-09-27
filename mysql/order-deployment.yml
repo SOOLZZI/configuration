@@ -1,33 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: order-mysql
   labels:
-    app: mysql
+    app: order-mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: order-mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: mysql
+        app: order-mysql
     spec:
       containers:
       - name: mysql
         image: mysql:latest
         volumeMounts:
           - mountPath: /var/lib/mysql
-            name: alcohol-mysql-volume
+            name: order-mysql-volume
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
         ports:
         - containerPort: 3306
+
       volumes:
-      - name: alcohol-mysql-volume
+      - name: order-mysql-volume
         hostPath:
-          path: /volume/data
+          path: /volume/data/order   

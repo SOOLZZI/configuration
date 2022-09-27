@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-mysql
+  labels:
+    app: auth-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: auth-mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:latest
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: auth-mysql-volume
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "1234"
+        ports:
+        - containerPort: 3306
+
+      volumes:
+      - name: auth-mysql-volume
+        hostPath:
+          path: /volume/data/auth    
