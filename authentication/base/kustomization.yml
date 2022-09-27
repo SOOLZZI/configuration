@@ -4,13 +4,14 @@ resources:
   - role.yml
 
 configMapGenerator:
-  - name: alcohol-service-configmap
+  - name: authentication-configmap-dev
+    namespace: authentication
     options:
       disableNameSuffixHash: true
     files:
       - bootstrap-dev.yml
 
 secretGenerator:
-  - name: alcohol-secret
-  - envs:
+  - name: authentication-secret
+    envs:
       - secret.env

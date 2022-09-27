@@ -9,3 +9,10 @@ configMapGenerator:
     disableNameSuffixHash: true
   files:
     - bootstrap-dev.yml
+
+secretGenerator:
+  - name: recipe-secret
+  - envs:
+      - secret.env
+
+      

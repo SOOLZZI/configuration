@@ -18,6 +18,9 @@ spec:
       - name: recipe-service
         image: phjppo0918/haru-han-jan-recipe-service
         imagePullPolicy: Always
-
+        envFrom:
+          - recipeSecret
         ports:
         - containerPort: 8080
+
+    

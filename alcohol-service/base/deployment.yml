@@ -16,6 +16,8 @@ spec:
       - name: alcohol-service
         image: phjppo0918/haru-han-jan-alcohol-service
         imagePullPolicy: Always
+        envFrom:
+          - alcohol-secret
         ports:
           - containerPort: 8080
         # resources:

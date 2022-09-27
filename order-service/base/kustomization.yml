@@ -1,0 +1,18 @@
+resources:
+  - "deployment.yml"
+  - "service.yml"
+  - "role.yml"
+
+configMapGenerator:
+- name: order-service-configmap-dev
+  options:
+    disableNameSuffixHash: true
+  files:
+    - bootstrap-dev.yml
+
+secretGenerator:
+  - name: order-secret
+  - envs:
+      - secret.env
+
+      
