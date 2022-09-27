@@ -17,7 +17,7 @@ spec:
         app: auth-mysql
     spec:
       containers:
-      - name: mysql
+      - name: auth-mysql
         image: mysql:latest
         volumeMounts:
           - mountPath: /var/lib/mysql
@@ -25,6 +25,8 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
+        - name: MYSQL_DATABASE
+          value: harudb
         ports:
         - containerPort: 3306
 

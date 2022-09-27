@@ -17,7 +17,7 @@ spec:
         app: alcohol-mysql
     spec:
       containers:
-      - name: mysql
+      - name: alcohol-mysql
         image: mysql:latest
         volumeMounts:
           - mountPath: /var/lib/mysql
@@ -25,10 +25,12 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "1234"
+        - name: MYSQL_DATABASE
+          value: harudb
         ports:
         - containerPort: 3306
 
       volumes:
       - name: alcohol-mysql-volume
         hostPath:
-          path: /volume/data/auth    
+          path: /volume/data/alcohol    

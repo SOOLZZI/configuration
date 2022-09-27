@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
   - name: mysql-svc
-    port: 3306
+    port: 33060
     targetPort: 3306
   selector:
     app: mysql
