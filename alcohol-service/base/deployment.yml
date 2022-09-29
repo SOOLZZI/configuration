@@ -16,11 +16,18 @@ spec:
       - name: alcohol-service
         image: phjppo0918/haru-han-jan-alcohol-service
         imagePullPolicy: Always
-        envFrom:
-          - alcohol-secret
+        volumeMounts:
+          - name: alcohol-secret
+            mountPath: /secrets
+
         ports:
           - containerPort: 8080
         # resources:
         #   limits:
         #     memory: "128Mi"
         #     cpu: "2"
+
+      volumes:
+      - name: alcohol-secret
+        secret:
+          secretName: alcohol-secret

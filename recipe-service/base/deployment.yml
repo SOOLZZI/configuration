@@ -18,9 +18,15 @@ spec:
       - name: recipe-service
         image: phjppo0918/haru-han-jan-recipe-service
         imagePullPolicy: Always
-        envFrom:
-          - recipeSecret
+        volumeMounts:
+          - name: recipe-secret
+            mountPath: /secrets
         ports:
         - containerPort: 8080
+
+      volumes:
+      - name: recipe-secret
+        secret:
+          secretName: recipe-secret
 
     

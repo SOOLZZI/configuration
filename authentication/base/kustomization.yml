@@ -5,11 +5,10 @@ resources:
 
 configMapGenerator:
   - name: authentication-configmap-dev
-    namespace: authentication
     options:
       disableNameSuffixHash: true
     files:
-      - bootstrap-dev.yml
+      - application-dev.yml
 
 secretGenerator:
   - name: authentication-secret

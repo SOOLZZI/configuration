@@ -12,7 +12,7 @@ configMapGenerator:
 
 secretGenerator:
   - name: order-secret
-  - envs:
+    envs:
       - secret.env
 
       

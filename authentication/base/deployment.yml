@@ -18,15 +18,38 @@ spec:
       - name: authentication
         image: phjppo0918/haru-han-jan-authentication
         imagePullPolicy: Always
-        volumeMounts:
-          - name: authentication-secret
-            mountPath: /secrets
+
+        env:
+          - name: DATABASE_HOST
+            valueFrom:
+              secretKeyRef:
+                name: authentication-secret
+                key: DATABASE_HOST
+
+          - name: DATABASE_SCHEMA
+            valueFrom:
+              secretKeyRef:
+                name: authentication-secret
+                key: DATABASE_SCHEMA
+                
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: authentication-secret
+                key: DATABASE_USERNAME
+
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: authentication-secret
+                key: DATABASE_PASSWORD
+
+              
+
+        
         ports:
         - containerPort: 8080
-      volumes:
-      - name: authentication-secret
-        secret:
-          secretName: authentication-secret
+
 
 
     

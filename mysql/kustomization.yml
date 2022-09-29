@@ -3,4 +3,9 @@ resources:
   - order-deployment.yml
   - recipe-deployment.yml
   - auth-deployment.yml
-  - service.yml
+  
+  - alcohol-service.yml
+  - order-service.yml
+  - recipe-service.yml
+  - auth-service.yml
+

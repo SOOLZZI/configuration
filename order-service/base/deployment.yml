@@ -15,12 +15,18 @@ spec:
     spec:
       serviceAccountName: api-reader
       containers:
-      - name: recipe-service
+      - name: order-service
         image: phjppo0918/haru-han-jan-order-service
         imagePullPolicy: Always
-        envFrom:
-          - recipeSecret
+        volumeMounts:
+          - name: order-secret
+            mountPath: /secrets
         ports:
         - containerPort: 8080
+
+      volumes:
+      - name: order-secret
+        secret:
+          secretName: order-secret
 
     

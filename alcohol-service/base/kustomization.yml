@@ -12,5 +12,5 @@ configMapGenerator:
 
 secretGenerator:
   - name: alcohol-secret
-  - envs:
+    envs:
       - secret.env

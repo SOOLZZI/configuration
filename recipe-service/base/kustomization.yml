@@ -12,7 +12,7 @@ configMapGenerator:
 
 secretGenerator:
   - name: recipe-secret
-  - envs:
+    envs:
       - secret.env
 
       
