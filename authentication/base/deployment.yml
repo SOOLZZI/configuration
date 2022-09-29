@@ -44,6 +44,13 @@ spec:
                 name: authentication-secret
                 key: database.password
 
+          - name: JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: authentication-secret
+                key: jwt.secret
+
+
         ports:
         - containerPort: 8080
         
