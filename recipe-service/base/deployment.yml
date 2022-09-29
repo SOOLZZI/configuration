@@ -23,25 +23,25 @@ spec:
             - name: DATABASE_HOST
               valueFrom:
                 secretKeyRef:
-                  name: alcohol-secret
+                  name: recipe-secret
                   key: database.host
 
             - name: DATABASE_SCHEMA
               valueFrom:
                 secretKeyRef:
-                  name: alcohol-secret
+                  name: recipe-secret
                   key: database.schema
 
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: alcohol-secret
+                  name: recipe-secret
                   key: database.username
 
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: alcohol-secret
+                  name: recipe-secret
                   key: database.password
 
           ports:
