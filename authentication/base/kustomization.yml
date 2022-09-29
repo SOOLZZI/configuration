@@ -2,6 +2,7 @@ resources:
   - deployment.yml
   - service.yml
   - role.yml
+  - secret.yml
 
 configMapGenerator:
   - name: authentication-configmap-dev
@@ -9,8 +10,3 @@ configMapGenerator:
       disableNameSuffixHash: true
     files:
       - application-dev.yml
-
-secretGenerator:
-  - name: authentication-secret
-    envs:
-      - secret.env

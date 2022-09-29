@@ -2,6 +2,7 @@ resources:
   - "deployment.yml"
   - "service.yml"
   - "role.yml"
+  - "secret.yml"
 
 configMapGenerator:
 - name: recipe-service-configmap-dev
@@ -10,9 +11,6 @@ configMapGenerator:
   files:
     - bootstrap-dev.yml
 
-secretGenerator:
-  - name: recipe-secret
-    envs:
-      - secret.env
+
 
       

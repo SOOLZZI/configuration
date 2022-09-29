@@ -6,27 +6,43 @@ spec:
   selector:
     matchLabels:
       app: recipe-service
-  
+
   template:
     metadata:
       labels:
         app: recipe-service
-    
+
     spec:
       serviceAccountName: api-reader
       containers:
-      - name: recipe-service
-        image: phjppo0918/haru-han-jan-recipe-service
-        imagePullPolicy: Always
-        volumeMounts:
-          - name: recipe-secret
-            mountPath: /secrets
-        ports:
-        - containerPort: 8080
+        - name: recipe-service
+          image: phjppo0918/haru-han-jan-recipe-service
+          imagePullPolicy: Always
 
-      volumes:
-      - name: recipe-secret
-        secret:
-          secretName: recipe-secret
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.host
 
-    
+            - name: DATABASE_SCHEMA
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.schema
+
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.username
+
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.password
+
+          ports:
+            - containerPort: 8080

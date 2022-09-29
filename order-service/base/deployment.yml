@@ -6,27 +6,43 @@ spec:
   selector:
     matchLabels:
       app: order-service
-  
+
   template:
     metadata:
       labels:
         app: order-service
-    
+
     spec:
       serviceAccountName: api-reader
       containers:
-      - name: order-service
-        image: phjppo0918/haru-han-jan-order-service
-        imagePullPolicy: Always
-        volumeMounts:
-          - name: order-secret
-            mountPath: /secrets
-        ports:
-        - containerPort: 8080
+        - name: order-service
+          image: phjppo0918/haru-han-jan-order-service
+          imagePullPolicy: Always
 
-      volumes:
-      - name: order-secret
-        secret:
-          secretName: order-secret
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.host
 
-    
+            - name: DATABASE_SCHEMA
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.schema
+
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.username
+
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alcohol-secret
+                  key: database.password
+
+          ports:
+            - containerPort: 8080

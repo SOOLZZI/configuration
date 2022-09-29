@@ -9,3 +9,5 @@ resources:
   - recipe-service.yml
   - auth-service.yml
 
+  - secret.yml
+

@@ -2,6 +2,7 @@ resources:
   - deployment.yml
   - service.yml
   - role.yml
+  - secret.yml
 
 configMapGenerator:
   - name: alcohol-service-configmap
@@ -10,7 +11,3 @@ configMapGenerator:
     files:
       - bootstrap-dev.yml
 
-secretGenerator:
-  - name: alcohol-secret
-    envs:
-      - secret.env

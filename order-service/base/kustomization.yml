@@ -2,6 +2,7 @@ resources:
   - "deployment.yml"
   - "service.yml"
   - "role.yml"
+  - "secret.yml"
 
 configMapGenerator:
 - name: order-service-configmap-dev
@@ -9,10 +10,5 @@ configMapGenerator:
     disableNameSuffixHash: true
   files:
     - bootstrap-dev.yml
-
-secretGenerator:
-  - name: order-secret
-    envs:
-      - secret.env
 
       

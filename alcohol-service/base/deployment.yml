@@ -16,9 +16,31 @@ spec:
       - name: alcohol-service
         image: phjppo0918/haru-han-jan-alcohol-service
         imagePullPolicy: Always
-        volumeMounts:
-          - name: alcohol-secret
-            mountPath: /secrets
+
+        env:
+          - name: DATABASE_HOST
+            valueFrom:
+              secretKeyRef:
+                name: alcohol-secret
+                key: database.host
+
+          - name: DATABASE_SCHEMA
+            valueFrom:
+              secretKeyRef:
+                name: alcohol-secret
+                key: database.schema
+                
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: alcohol-secret
+                key: database.username
+
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: alcohol-secret
+                key: database.password
 
         ports:
           - containerPort: 8080
@@ -27,7 +49,3 @@ spec:
         #     memory: "128Mi"
         #     cpu: "2"
 
-      volumes:
-      - name: alcohol-secret
-        secret:
-          secretName: alcohol-secret

@@ -24,9 +24,15 @@ spec:
             name: alcohol-mysql-volume
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "1234"
+          valueFrom:
+              secretKeyRef:
+                name: database-secret
+                key: database.password
         - name: MYSQL_DATABASE
-          value: harudb
+          valueFrom:
+              secretKeyRef:
+                name: database-secret
+                key: database.schema
         ports:
         - containerPort: 3306
 

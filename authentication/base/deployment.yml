@@ -24,31 +24,29 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: authentication-secret
-                key: DATABASE_HOST
+                key: database.host
 
           - name: DATABASE_SCHEMA
             valueFrom:
               secretKeyRef:
                 name: authentication-secret
-                key: DATABASE_SCHEMA
+                key: database.schema
                 
           - name: DATABASE_USERNAME
             valueFrom:
               secretKeyRef:
                 name: authentication-secret
-                key: DATABASE_USERNAME
+                key: database.username
 
           - name: DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: authentication-secret
-                key: DATABASE_PASSWORD
+                key: database.password
 
-              
-
-        
         ports:
         - containerPort: 8080
+        
 
 
 
